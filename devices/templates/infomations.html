@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table styled-table">
+    <thead>
+        <th>Hành động</th>
+        <th>Người dùng</th>
+        <th>Thời gian xảy ra</th>
+        <th>Ảnh giám sát</th>
+    </thead>
+    <tbody>
+        {% for info in infomations %}
+        <tr>
+            {% if info.status %}
+                <td>Đóng cửa</td>                   
+            {% else %}
+                <td>Mở cửa</td>
+            {% endif %}
+            <td>{{info.user}}</td>
+            <td>{{ info.time }}</td>
+            <div class="thu-nghiem-zoom"><td>
+            {% if info.img %}
+                    <a href="{{info.img.url}}" target="_blank" style="color : #5ecadb;">Xem ảnh</a>
+                    {% comment %} <img src="{{info.img.url}}" style="width:30px;height:30px;"> {% endcomment %}
+                    {% endif %}
+                </td></div>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

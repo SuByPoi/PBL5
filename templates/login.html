@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <title>Đăng nhập</title>
+  </head>
+  <body >
+    <div class="container">
+      <form id="form" class="form" method="POST">
+        {% csrf_token %}
+        <h2>Đăng nhập</h2>
+        
+        <div class="form-control" >
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" name="username" placeholder="Tên đăng nhập" {%for message in messages%}{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}style="border-color:red;"{% endif %}{%endfor%}/>
+          {% for message in messages %}
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <small>{{message}}</small>
+          {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="form-control">
+          <label for="password">Mật khẩu</label>
+          <input type="password" name="password" placeholder="Mật khẩu" {%for message in messages%}{% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}style="border-color:red;"{% endif %}{%endfor%} />
+          {% for message in messages %}
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+          <small>{{message}}</small>
+          {% endif %}
+          {% endfor %}
+        </div>
+
+        <input id="button" type="submit" value="Đăng nhập" />        
+        <p>Bạn chưa có tài khoản?  <a href="register" style="color:#3498db;">Đăng ký ngay</a></p>
+      </form>
+    </div>
+  </body>
+</html>

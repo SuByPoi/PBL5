@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="text-align:center;"><h4 style="margin: 10px 0">Quản lý các phòng</h4></div>
+<table class="table styled-table">
+    <thead>
+        <th>#</th>
+        <th>Tên Phòng</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.id }}</td>
+            <td>{{ room.name }}</td>
+            <td>
+                <a style="color:#383939;text-decoration: none;" href="{{room.get_absolute_url}}"><i class="fa-solid fa-circle-info" style="font-size:30px;color:#17a2b8;"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}  

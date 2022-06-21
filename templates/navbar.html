@@ -1,0 +1,45 @@
+<nav class='navbar navbar-expand-lg navbar-dark bg-info'>
+    <div class='container'>
+        <i class="fa-solid fa-house" style="color: white;margin-right:5px;"></i>
+        <a class='navbar-brand' href='/home/'>Smart Home</a>
+        <button
+            class='navbar-toggler'
+            type='button'
+            data-toggle='collapse'
+            data-target='#navbarSupportedContent'
+            aria-controls='navbarSupportedContent'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+        >
+            <span class='navbar-toggler-icon'></span>
+        </button>
+
+        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul class='navbar-nav ml-auto'>
+                <li class='nav-item dropdown'>
+                    <a
+                        class='nav-link dropdown-toggle'
+                        href='#'
+                        id='navbarDropdown'
+                        role='button'
+                        data-toggle='dropdown'
+                        aria-haspopup='true'
+                        aria-expanded='false'
+                    >
+                        <i class="fas fa-smile" style="color: yellow;margin-right:2px;"></i>
+                        Hi {{username}}    
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                        <a class='dropdown-item' href='/rooms'>Danh sách các phòng</a>
+                        <a class='dropdown-item' href='/doorLogs'>Lịch sử mở cửa</a>
+                        <div class='dropdown-divider'></div>
+                        <a class='dropdown-item' href='/logout'>Đăng xuất</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  

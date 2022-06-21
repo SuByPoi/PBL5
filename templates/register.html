@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <title>Đăng ký</title>
+  </head>
+  <body>
+    <div class="container">
+      <form id="form" class="form" method="POST">
+        {% csrf_token %}
+        <h2>Đăng ký</h2>
+        <div class="form-control" >
+          <label>Tên đăng nhập</label>
+          <div {% if form.username.errors %} style="border: 2px solid red;border-radius: 4px;"{% endif %}>{{ form.username }}</div>
+          <div style="font-size:12px;color:red;">{{ form.username.errors }}</div>
+        </div>
+        <div class="form-control">
+          <label>{{ form.email.label }}</label>
+          <div {% if form.email.errors %} style="border: 2px solid red;border-radius: 4px;"{% endif %}>{{ form.email }}</div>
+          <div style="font-size:12px;color:red;">{{ form.email.errors }}</div>
+        </div>
+        <div class="form-control">
+          <label>Mật khẩu</label>
+          <div {% if form.password1.errors %} style="border: 2px solid red;border-radius: 4px;"{% endif %}>{{ form.password1 }}</div>
+          <div style="font-size:12px;color:red;">{{ form.password1.errors }}</div>
+        </div>
+        <div class="form-control">
+          <label> Nhập lại mật khẩu </label>
+          <div {% if form.password2.errors %} style="border: 2px solid red;border-radius: 4px;"{% endif %}>{{ form.password2 }}</div>
+          <div style="font-size:12px;color:red;">{{ form.password2.errors }}</div>
+        </div>
+        <input id="button" type="submit" value="Đăng ký" />
+        <p>Bạn đã có tài khoản?  <a href="/" style="color:#3498db;">Đăng nhập ngay</a></p>
+      </form>
+    </div>
+  </body>
+</html>

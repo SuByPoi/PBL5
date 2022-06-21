@@ -1,0 +1,43 @@
+
+    {% extends 'base.html' %}
+    {% block content %}
+    <section>    
+            
+            <div class="row title_room" style="margin-top:10px;text-align:center">
+                <h3 class="col-12"> {{ room.name }} {{a}}</h3>
+            </div>
+
+            <a href=".." style="text-decoration: none;">
+                <div class="btn_back">
+                    <p style="color: #FFF;" >Quay lại <i class="fa-solid fa-circle-arrow-left"></i></p>    
+                </div>
+            </a>
+            
+        
+            <table class="table styled-table">
+                <thead>
+                    <th>Tên thiết bị</th>
+                    <th>Trạng thái</th>
+                    <th>Lần cuối hoạt động</th>
+                </thead>
+                <tbody>
+                    {% for device in devices %}
+                    <tr>
+                        <form class="form" method="POST" action="devices"> {% csrf_token %}
+                            <td>{{ device.name }}</td>
+                            {% if device.status %}
+                            <div><td><input type="submit" class="btn btn-success" value="Onl">  </td></div>
+                                
+                            {% else %}
+                                <td><input type="submit" class="btn btn-danger" value="Off"></td>
+                            {% endif %}
+                            <td>{{ device.last_Active | default:'-'}}</td>
+                            <input type="hidden" value="{{device.pin}}" name="pin">
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </section>
+    
+    {% endblock %}
